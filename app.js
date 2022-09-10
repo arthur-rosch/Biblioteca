@@ -8,7 +8,8 @@ let choice = true,
   autor = [],
   title = [],
   year = [],
-  language = [];
+  language = [],
+  indexArray = 0;
 
 while (choice) {
   let option = Number(
@@ -35,19 +36,32 @@ while (choice) {
       }
     }
   }
+  if (option === 1) {
+    let autorName = prompt("Qual Nome do Autor");
+    searchAuthorBook(autorName);
+  }
   if (option === 6) {
     choice = false;
   }
 }
 
 function createBook(Author, Title, Year, Language) {
-  let indexArray = 0;
-
   autor[indexArray] = Author;
   title[indexArray] = Title;
   year[indexArray] = Year;
   language[indexArray] = Language;
   indexArray++;
 }
-
-console.log(autor, title, year, language);
+function searchAuthorBook(AuthorName) {
+  let arrayBookAuxiliar = [],
+    indexBook = 0;
+  for (let A = 0; A < autor.length; A++) {
+    if (AuthorName === autor[A]) {
+      arrayBookAuxiliar[indexBook] = title[A];
+      indexBook++;
+    }
+  }
+  for (let B = 0; B < arrayBookAuxiliar.length; B++) {
+    console.log(`Livros De ${AuthorName}: ${arrayBookAuxiliar[B]}`);
+  }
+}
