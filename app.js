@@ -40,6 +40,10 @@ while (choice) {
     let autorName = prompt("Qual Nome do Autor");
     searchAuthorBook(autorName);
   }
+  if (option === 2) {
+    let yearSearch = prompt("Qual Ano de Livros voce Gostaria de pesquisar");
+    searchYearBook(yearSearch);
+  }
   if (option === 6) {
     choice = false;
   }
@@ -63,5 +67,18 @@ function searchAuthorBook(AuthorName) {
   }
   for (let B = 0; B < arrayBookAuxiliar.length; B++) {
     console.log(`Livros De ${AuthorName}: ${arrayBookAuxiliar[B]}`);
+  }
+}
+function searchYearBook(Year) {
+  let yearBookAuxiliar = [],
+    indexBook = 0;
+  for (let A = 0; A < year.length; A++) {
+    if (Year === year[A]) {
+      yearBookAuxiliar[indexBook] = title[A];
+      indexBook++;
+    }
+  }
+  for (let B = 0; B < yearBookAuxiliar.length; B++) {
+    console.log(`Livros De ${Year}: ${yearBookAuxiliar[B]}`);
   }
 }
