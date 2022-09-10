@@ -21,9 +21,9 @@ while (choice) {
   if (option === 0) {
     let choiceCreateBook = true;
     while (choiceCreateBook) {
-      let authorBook = prompt("Autor do Livro:"),
+      const authorBook = prompt("Autor do Livro:"),
         titleBook = prompt("Titulo do Livro:"),
-        yearBook = prompt("Ano do Livro:"),
+        yearBook = Number(prompt("Ano do Livro:")),
         languageBook = prompt("Linguagem do Livro:");
       createBook(authorBook, titleBook, yearBook, languageBook);
       const option = Number(
@@ -37,12 +37,19 @@ while (choice) {
     }
   }
   if (option === 1) {
-    let autorName = prompt("Qual Nome do Autor");
+    const autorName = prompt("Qual Nome do Autor");
     searchAuthorBook(autorName);
   }
   if (option === 2) {
-    let yearSearch = prompt("Qual Ano de Livros voce Gostaria de pesquisar");
+    const yearSearch = prompt("Qual Ano de Livros voce Gostaria de pesquisar");
     searchYearBook(yearSearch);
+  }
+  if (option === 3) {
+    const autorName = prompt("Qual Nome do Autor"),
+      yearSearch = Number(
+        prompt("Qual ano do Livros voce Gostaria de pesquisar")
+      );
+    authorBooksFromAGivenYear(autorName, yearSearch);
   }
   if (option === 6) {
     choice = false;
@@ -80,5 +87,18 @@ function searchYearBook(Year) {
   }
   for (let B = 0; B < yearBookAuxiliar.length; B++) {
     console.log(`Livros De ${Year}: ${yearBookAuxiliar[B]}`);
+  }
+}
+function authorBooksFromAGivenYear(AuthorName, Year) {
+  let arrayAuxiliar = [],
+    indexAuxiliar = 0;
+  for (let A = 0; A < autor.length; A++) {
+    if (AuthorName == autor[A] && year[A] >= Year) {
+      arrayAuxiliar[indexAuxiliar] = title[A];
+      indexAuxiliar++;
+    }
+  }
+  for (let B = 0; B < arrayAuxiliar.length; B++) {
+    console.log(`Livros Do Ano ${Year} Do ${AuthorName}: ${arrayAuxiliar[B]}`);
   }
 }
