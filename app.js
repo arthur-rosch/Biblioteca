@@ -57,6 +57,10 @@ while (choice) {
     );
     bookLanguage(bookName);
   }
+  if (option === 5) {
+    const bookLanguage = prompt("Qual Idioma do Livros:");
+    certainLanguage(bookLanguage);
+  }
   if (option === 6) {
     choice = false;
   }
@@ -121,3 +125,17 @@ function bookLanguage(BookName) {
     console.log(`Livro ${BookName} Idiomas ${languageAuxiliar[B]}`);
   }
 }
+function certainLanguage(Language) {
+  let languageAuxiliar = [],
+    index = 0;
+  for (let A = 0; A < year.length; A++) {
+    if (Language === language[A]) {
+      languageAuxiliar[index] = title[A];
+      index++;
+    }
+  }
+  for (let B = 0; B < languageAuxiliar.length; B++) {
+    console.log(`Livros Do Idioma ${Language}: ${languageAuxiliar[B]}`);
+  }
+}
+function orderYear() {}
