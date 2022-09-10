@@ -51,6 +51,12 @@ while (choice) {
       );
     authorBooksFromAGivenYear(autorName, yearSearch);
   }
+  if (option === 4) {
+    const bookName = prompt(
+      "Qual Nome do Livro voce quer Procurar em Diferente Linguagem"
+    );
+    bookLanguage(bookName);
+  }
   if (option === 6) {
     choice = false;
   }
@@ -100,5 +106,18 @@ function authorBooksFromAGivenYear(AuthorName, Year) {
   }
   for (let B = 0; B < arrayAuxiliar.length; B++) {
     console.log(`Livros Do Ano ${Year} Do ${AuthorName}: ${arrayAuxiliar[B]}`);
+  }
+}
+function bookLanguage(BookName) {
+  let languageAuxiliar = [],
+    indexLanguage = 0;
+  for (let A = 0; A < title.length; A++) {
+    if (BookName === title[A]) {
+      languageAuxiliar[indexLanguage] = language[A];
+      indexLanguage++;
+    }
+  }
+  for (let B = 0; B < languageAuxiliar.length; B++) {
+    console.log(`Livro ${BookName} Idiomas ${languageAuxiliar[B]}`);
   }
 }
