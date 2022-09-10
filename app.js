@@ -4,7 +4,12 @@
 // 4. Buscar um livro pelo nome e trazer todos as suas versões em diferentes idiomas;
 // 5. Exibir os livros de determinado idioma;
 // // 6. Exibir os livros ordenados pelo ano;
-let choice = true;
+let choice = true,
+  autor = [],
+  title = [],
+  year = [],
+  language = [];
+
 while (choice) {
   let option = Number(
     prompt(
@@ -12,7 +17,7 @@ while (choice) {
         "\n3|Exibir Livros de um Autor partir de um Ano \n4|Informações de um Livros \n5|Livros de Certo Idioma \n6|Sair"
     )
   );
-  if (option === 1) {
+  if (option === 0) {
     let choiceCreateBook = true;
     while (choiceCreateBook) {
       let authorBook = prompt("Autor do Livro:"),
@@ -24,9 +29,9 @@ while (choice) {
         prompt("Gostaria de Cadastrar mais Livros \n1|Sim \n2|Nao")
       );
       if (option === 2) {
-        choice = false;
+        choiceCreateBook = false;
       } else {
-        choice = true;
+        choiceCreateBook = true;
       }
     }
   }
@@ -36,14 +41,13 @@ while (choice) {
 }
 
 function createBook(Author, Title, Year, Language) {
-  let autor = [],
-    title = [],
-    year = [],
-    language = [],
-    indexArray = 0;
+  let indexArray = 0;
 
-  Author = autor[indexArray];
-  Title = title[indexArray];
-  Year = year[indexArray];
-  Language = language[indexArray];
+  autor[indexArray] = Author;
+  title[indexArray] = Title;
+  year[indexArray] = Year;
+  language[indexArray] = Language;
+  indexArray++;
 }
+
+console.log(autor, title, year, language);
