@@ -15,7 +15,8 @@ while (choice) {
   let option = Number(
     prompt(
       "0|Cadastrar Livro \n1|Exibir livros de um Autor \n2|Exibir livros de um Ano" +
-        "\n3|Exibir Livros de um Autor partir de um Ano \n4|Informações de um Livros \n5|Livros de Certo Idioma \n6|Sair"
+        "\n3|Exibir Livros de um Autor partir de um Ano \n4|Informações de um Livros " +
+        "\n5|Livros de Certo Idioma \n6|Ordenar Livro por Ano\n7|Sair"
     )
   );
   if (option === 0) {
@@ -62,6 +63,9 @@ while (choice) {
     certainLanguage(bookLanguage);
   }
   if (option === 6) {
+    sortByYear();
+  }
+  if (option === 7) {
     choice = false;
   }
 }
@@ -138,4 +142,32 @@ function certainLanguage(Language) {
     console.log(`Livros Do Idioma ${Language}: ${languageAuxiliar[B]}`);
   }
 }
-function orderYear() {}
+function sortByYear() {
+  let yearAuxiliar, titleAuxiliar, authorAuxiliar, languageAuxiliar;
+  for (let A = 0; A < year.length; A++) {
+    for (let i = 0; i < year.length - 1; i++) {
+      if (year[i] < year[i + 1]) {
+        yearAuxiliar = year[i];
+        year[i] = year[i + 1];
+        year[i + 1] = yearAuxiliar;
+
+        titleAuxiliar = title[i];
+        title[i] = title[i + 1];
+        title[i + 1] = titleAuxiliar;
+
+        authorAuxiliar = autor[i];
+        autor[i] = autor[i + 1];
+        autor[i + 1] = authorAuxiliar;
+
+        languageAuxiliar = language[i];
+        language[i] = language[i + 1];
+        language[i + 1] = languageAuxiliar;
+      }
+    }
+  }
+  for (let index = 0; index < year.length; index++) {
+    console.log(
+      `Ano: ${year[index]} Titulo: ${title[index]} Autor:${autor[index]} Idioma: ${language[index]}`
+    );
+  }
+}
