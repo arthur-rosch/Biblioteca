@@ -71,11 +71,10 @@ while (choice) {
 }
 
 function createBook(Author, Title, Year, Language) {
-  autor[indexArray] = Author;
-  title[indexArray] = Title;
-  year[indexArray] = Year;
-  language[indexArray] = Language;
-  indexArray++;
+  autor.push(Author);
+  title.push(Title);
+  year.push(Year);
+  language.push(Language);
 }
 function searchAuthorBook(AuthorName) {
   let arrayBookAuxiliar = [],
@@ -171,3 +170,4 @@ function sortByYear() {
     );
   }
 }
+console.log(autor, title, language, year);
