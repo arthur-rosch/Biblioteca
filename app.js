@@ -142,32 +142,13 @@ function certainLanguage(Language) {
   }
 }
 function sortByYear() {
-  let yearAuxiliar, titleAuxiliar, authorAuxiliar, languageAuxiliar;
-  for (let A = 0; A < year.length; A++) {
-    for (let i = 0; i < year.length - 1; i++) {
-      if (year[i] < year[i + 1]) {
-        yearAuxiliar = year[i];
-        year[i] = year[i + 1];
-        year[i + 1] = yearAuxiliar;
-
-        titleAuxiliar = title[i];
-        title[i] = title[i + 1];
-        title[i + 1] = titleAuxiliar;
-
-        authorAuxiliar = autor[i];
-        autor[i] = autor[i + 1];
-        autor[i + 1] = authorAuxiliar;
-
-        languageAuxiliar = language[i];
-        language[i] = language[i + 1];
-        language[i + 1] = languageAuxiliar;
-      }
-    }
-  }
+  year.sort();
+  title.sort();
+  autor.sort();
+  language.sort();
   for (let index = 0; index < year.length; index++) {
     console.log(
       `Ano: ${year[index]} Titulo: ${title[index]} Autor:${autor[index]} Idioma: ${language[index]}`
     );
   }
 }
-console.log(autor, title, language, year);
