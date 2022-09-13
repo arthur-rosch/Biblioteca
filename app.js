@@ -89,65 +89,74 @@ function searchAuthorBook(Author) {
   return alert(`Livros de ${Author}: ${bookAuthor}`);
 }
 function searchYearBook(Year) {
-  let yearBookAuxiliar = [],
-    indexBook = 0;
-  for (let A = 0; A < year.length; A++) {
-    if (Year === year[A]) {
-      yearBookAuxiliar[indexBook] = title[A];
-      indexBook++;
+  let yearBook = [];
+
+  year.forEach(searchYear);
+
+  function searchYear(item, index) {
+    if (item == Year) {
+      yearBook.push(title[index]);
     }
   }
-  for (let B = 0; B < yearBookAuxiliar.length; B++) {
-    console.log(`Livros De ${Year}: ${yearBookAuxiliar[B]}`);
-  }
+  return alert(`Livros do ano ${Year}: ${yearBook}`);
 }
 function authorBooksFromAGivenYear(AuthorName, Year) {
-  let arrayAuxiliar = [],
-    indexAuxiliar = 0;
-  for (let A = 0; A < autor.length; A++) {
-    if (AuthorName == autor[A] && year[A] >= Year) {
-      arrayAuxiliar[indexAuxiliar] = title[A];
-      indexAuxiliar++;
+  let bookYearAuthor = [];
+
+  year.forEach(AddBooksByXYear);
+
+  function AddBooksByXYear(item, index) {
+    if (item >= Year) {
+      bookYearAuthor.push(title[index]);
     }
   }
-  for (let B = 0; B < arrayAuxiliar.length; B++) {
-    console.log(`Livros Do Ano ${Year} Do ${AuthorName}: ${arrayAuxiliar[B]}`);
-  }
+
+  return alert(
+    `Os Livros do Autor ${AuthorName} a partir do Ano ${Year} são: ${bookYearAuthor}`
+  );
 }
 function bookLanguage(BookName) {
-  let languageAuxiliar = [],
-    indexLanguage = 0;
-  for (let A = 0; A < title.length; A++) {
-    if (BookName === title[A]) {
-      languageAuxiliar[indexLanguage] = language[A];
-      indexLanguage++;
+  let languageArray = [];
+
+  BookName.forEach(searchLanguage);
+
+  function searchLanguage(item, index) {
+    if (item == BookName) {
+      languageArray.push(language[index]);
     }
   }
-  for (let B = 0; B < languageAuxiliar.length; B++) {
-    console.log(`Livro ${BookName} Idiomas ${languageAuxiliar[B]}`);
-  }
+  return alert(`Livro ${BookName} \nIdiomas: ${languageArray}`);
 }
 function certainLanguage(Language) {
-  let languageAuxiliar = [],
-    index = 0;
-  for (let A = 0; A < year.length; A++) {
-    if (Language === language[A]) {
-      languageAuxiliar[index] = title[A];
-      index++;
+  let idioma = [];
+
+  language.forEach(FilterBooksByLanguage);
+
+  function FilterBooksByLanguage(item, index) {
+    if (item == Language) {
+      idioma.push(title[index]);
     }
   }
-  for (let B = 0; B < languageAuxiliar.length; B++) {
-    console.log(`Livros Do Idioma ${Language}: ${languageAuxiliar[B]}`);
-  }
+
+  return alert(`Os Livros listados no idioma ${Language} são: ${idioma}`);
 }
 function sortByYear() {
-  year.sort();
-  title.sort();
-  autor.sort();
-  language.sort();
-  for (let index = 0; index < year.length; index++) {
-    console.log(
-      `Ano: ${year[index]} Titulo: ${title[index]} Autor:${autor[index]} Idioma: ${language[index]}`
-    );
+  let booksName = [];
+  for (let i = 0; i < year.length + 1; i++) {
+    if (year[i] > year[i + 1]) {
+      booksName.unshift(title[i + 1]);
+      booksName.push(title[i]);
+      booksName.pop();
+    }
+
+    if (year[i] < year[i + 1]) {
+      booksName.unshift(title[i]);
+      booksName.push(title[i + 1]);
+    }
   }
+
+  let sortBook = year;
+  sortBook = sortBooks.sort();
+
+  return alert(`{${sortBooks}} {${booksName}}`);
 }
