@@ -76,14 +76,17 @@ function createBook(Author, Title, Year, Language) {
   year.push(Year);
   language.push(Language);
 }
-function searchAuthorBook(AuthorName) {
+function searchAuthorBook(Author) {
   let bookAuthor = [];
-  for (let index = 0; index < autor.length; index++) {
-    if (AuthorName == autor[index]) {
+
+  autor.forEach(searchBook);
+
+  function searchBook(item, index) {
+    if (item == Author) {
       bookAuthor.push(title[index]);
     }
   }
-  return alert(`Livros de ${AuthorName}: ${bookAuthor}`);
+  return alert(`Livros de ${Author}: ${bookAuthor}`);
 }
 function searchYearBook(Year) {
   let yearBookAuxiliar = [],
