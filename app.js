@@ -77,17 +77,13 @@ function createBook(Author, Title, Year, Language) {
   language.push(Language);
 }
 function searchAuthorBook(AuthorName) {
-  let arrayBookAuxiliar = [],
-    indexBook = 0;
-  for (let A = 0; A < autor.length; A++) {
-    if (AuthorName === autor[A]) {
-      arrayBookAuxiliar[indexBook] = title[A];
-      indexBook++;
+  let bookAuthor = [];
+  for (let index = 0; index < autor.length; index++) {
+    if (AuthorName == autor[index]) {
+      bookAuthor.push(title[index]);
     }
   }
-  for (let B = 0; B < arrayBookAuxiliar.length; B++) {
-    console.log(`Livros De ${AuthorName}: ${arrayBookAuxiliar[B]}`);
-  }
+  return alert(`Livros de ${AuthorName}: ${bookAuthor}`);
 }
 function searchYearBook(Year) {
   let yearBookAuxiliar = [],
